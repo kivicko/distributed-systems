@@ -77,6 +77,7 @@ public class  LeaderElection implements Watcher {
                         zooKeeper.notify();
                     }
                 }
+                break;
         }
     }
 }
