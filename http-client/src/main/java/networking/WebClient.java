@@ -1,0 +1,28 @@
+package networking;
+
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.concurrent.CompletableFuture;
+
+public class WebClient {
+    private HttpClient webClient;
+
+    public WebClient() {
+        webClient = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .build();
+    }
+
+    public CompletableFuture<String> sendTask(String url, byte[] requestPayload) {
+        HttpRequest request = HttpRequest.newBuilder()
+                .POST(HttpRequest.BodyPublishers.ofByteArray(requestPayload))
+                .header("X-Debug", "true")
+                .uri(URI.create(url))
+                .build();
+
+        return webClient.sendAsync(request, HttpResponse.BodyHandlers.ofString()).thenApply(HttpResponse::body);
+    }
+}
