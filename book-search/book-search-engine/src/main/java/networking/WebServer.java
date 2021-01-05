@@ -45,6 +45,10 @@ public class WebServer {
         this.onRequestCallback = onRequestCallback;
     }
 
+    public void stop() {
+        server.stop(0);
+    }
+
     public void startServer() {
         try {
             this.server = HttpServer.create(new InetSocketAddress(port), 0);

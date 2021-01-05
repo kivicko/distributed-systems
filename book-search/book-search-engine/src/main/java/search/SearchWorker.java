@@ -9,7 +9,6 @@ import networking.OnRequestCallback;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.nio.Buffer;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,7 +29,7 @@ public class SearchWorker implements OnRequestCallback {
 
         Result result = new Result();
 
-        for(String document : documents) {
+        for (String document : documents) {
             List<String> words = parseWordsFromDocument(document);
             DocumentData documentData = TFIDF.createDocumentData(words, task.getSearchTerms());
             result.addDocumentData(document, documentData);
