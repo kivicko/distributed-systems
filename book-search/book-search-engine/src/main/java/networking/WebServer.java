@@ -46,7 +46,7 @@ public class WebServer {
     }
 
     public void stop() {
-        server.stop(0);
+        server.stop(10);
     }
 
     public void startServer() {

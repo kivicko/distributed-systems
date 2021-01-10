@@ -33,6 +33,8 @@ public class SearchCoordinator implements OnRequestCallback {
     public SearchCoordinator(ServiceRegistry workersServiceRegistry, WebClient webClient) {
         this.workersServiceRegistry = workersServiceRegistry;
         this.client = webClient;
+        this.documents = readDocumentsList();
+
     }
 
     @Override
